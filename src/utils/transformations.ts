@@ -1,9 +1,13 @@
-export const capitalize = () => {
-    // todo: build this function
-    // `capitalize("jOn")` should output `"Jon"`
-}
+export const capitalize = (strToCapitalize: string) => {
+  if (!strToCapitalize) return "";
+  return (
+    strToCapitalize.charAt(0).toUpperCase() +
+    strToCapitalize.slice(1).toLowerCase()
+  );
+};
 
-export const formatPhoneNumber = () => {
-    // todo: build this function
-    // `formatPhoneNumber("1234567")` should be `"12-34-56-7"`
-}
+export const formatPhoneNumber = (phoneNumber: string): string => {
+  if (!phoneNumber) return "";
+  const groups = phoneNumber.match(/.{1,2}/g);
+  return groups ? groups.join("-") : "";
+};

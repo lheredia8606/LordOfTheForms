@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { ProfileInformation } from "../ProfileInformation";
-import { FunctionalForm } from "./FunctionalForm";
+import { User } from "../User";
+import { FunctionalForm } from "./Components/FunctionalForm";
 
 export const FunctionalApp = () => {
+  const [userData, setUserData] = useState(new User("", "", "", "", ""));
+
   return (
     <>
       <h2>Functional</h2>
-      <ProfileInformation userData={null} />
-      <FunctionalForm />
+      <ProfileInformation userData={userData} />
+      <FunctionalForm setUserData={setUserData} />
     </>
   );
 };

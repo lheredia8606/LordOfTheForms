@@ -70,6 +70,18 @@ form input {
   font-family: MorrisRoman;
 }
 
+form select {
+  font-size: 14px;
+  width: 310px;
+  font-family: MorrisRoman;
+  padding: 0px 0px 0px 2px;
+  height: 27px;
+}
+
+form option {
+  font-size: 10px;
+}
+
 form input:not([type="submit"]) {
   width: 300px;
 }
