@@ -1,11 +1,15 @@
 import { Component } from "react";
 import { ProfileInformation } from "../ProfileInformation";
-import { User } from "../User";
 import { ClassForm } from "./Components/ClassForm";
+import { User } from "../utils/types and interfaces";
+
+interface ClassAppState {
+  userData: User | null;
+}
 
 export class ClassApp extends Component {
   state = {
-    userData: new User("", "", "", "", ""),
+    userData: null,
   };
 
   setUserData = (userData: User) => {

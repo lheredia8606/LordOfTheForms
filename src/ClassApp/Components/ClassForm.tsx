@@ -10,8 +10,8 @@ import {
   isUserValid,
 } from "../../utils/validations";
 import { ErrorMessage, phoneFormat } from "../../utils/InitialData";
-import { User } from "../../User";
 import { capitalize } from "../../utils/transformations";
+import { User } from "../../utils/types and interfaces";
 
 interface TClassFormProps {
   setUserData: (userData: User) => void;
@@ -49,13 +49,13 @@ export class ClassForm extends Component<TClassFormProps> {
         onSubmit={(e) => {
           e.preventDefault();
           this.setState({ isSubmitted: true });
-          const userData = new User(
-            capitalize(firstName),
-            capitalize(lastName),
+          const userData: User = {
+            firstName: capitalize(firstName),
+            lastName: capitalize(lastName),
             email,
             city,
-            phoneNumber.join("")
-          );
+            phone: phoneNumber.join(""),
+          };
           if (isUserValid(userData)) {
             setUserData(userData);
             this.restartInputs();
@@ -114,15 +114,19 @@ export class ClassForm extends Component<TClassFormProps> {
         />
 
         {/* City Input */}
-        <SelectInputComponent
+        {/* City Input */}
+        <TextInputComponent
           errorMessage={ErrorMessage.city}
-          isSubmitted={isSubmitted}
-          labelValue="City"
-          selectProps={{
+          inputProps={{
             onChange: (e) => {
               this.setState({ city: e.target.value });
             },
+            list: "cities",
+            placeholder: "City",
+            value: city,
           }}
+          isSubmitted={isSubmitted}
+          labelValue="City"
           isInputInvalid={isCityInvalid(city)}
         />
 

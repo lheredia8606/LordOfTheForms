@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { ProfileInformation } from "../ProfileInformation";
-import { User } from "../User";
 import { FunctionalForm } from "./Components/FunctionalForm";
+import { User } from "../utils/types and interfaces";
 
 export const FunctionalApp = () => {
-  const [userData, setUserData] = useState(new User("", "", "", "", ""));
+  const [userData, setUserData] = useState<null | User>(null);
 
   return (
     <>

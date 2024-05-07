@@ -1,5 +1,5 @@
-import { User } from "./User";
 import { formatPhoneNumber } from "./utils/transformations";
+import { User } from "./utils/types and interfaces";
 
 export const InfoRow = ({ label, value }: { label: string; value: string }) => {
   return (
@@ -11,8 +11,8 @@ export const InfoRow = ({ label, value }: { label: string; value: string }) => {
     </div>
   );
 };
-export const ProfileInformation = ({ userData }: { userData: User }) => {
-  if (userData.firstName.length < 2) {
+export const ProfileInformation = ({ userData }: { userData: User | null }) => {
+  if (!userData) {
     return (
       <>
         <u>
@@ -25,7 +25,7 @@ export const ProfileInformation = ({ userData }: { userData: User }) => {
     );
   }
 
-  if (userData.firstName.length >= 2) {
+  if (userData) {
     const { email, firstName, lastName, phone, city } = userData;
     return (
       <>
